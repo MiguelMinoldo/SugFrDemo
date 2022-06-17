@@ -1,19 +1,18 @@
 import Cookies from 'js-cookie'
-import { createClient } from 'configcat-node'
-import { Text, Code, List, Link, Button } from '@vercel/examples-ui'
-import { useValue } from '@lib/use-configcat'
+import { Text, Button } from '@vercel/examples-ui'
 import ConfigcatLayout from '@components/layout'
 import Head from 'next/head'
+import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 
-export default function Index({ sugconfr }) {
-  const userFromFrance = useValue('userFromFrance', false)
+export default function Index() {
   const removeCookie = (name: string) => {
     Cookies.remove(name)
     window.location.reload()
   }
 
   return (
+    <>
     <div className={styles.container}>
     <Head>
       <title>Edge Functions Demo - Configcat</title>
@@ -32,10 +31,12 @@ export default function Index({ sugconfr }) {
       
       <div className={styles.grid}>
         
-          <a href="/about" className={styles.card}>
-            <h2>Test it! &rarr;</h2>
-            <p>Click to go to the About page...</p>
-          </a>    
+          <Link href="/about">
+            <a  className={styles.card} >
+              <h2>Test it! &rarr;</h2>
+              <p>Click to go to the About page...</p>
+            </a>
+          </Link>    
           
         </div>
 
@@ -54,17 +55,9 @@ export default function Index({ sugconfr }) {
       </div>
       
     </main>
-    </div>)
+    </div>
+    </>
+    )
 }
 
 Index.Layout = ConfigcatLayout
-
-export async function getStaticProps() {
-  const configcat = createClient(process.env.NEXT_PUBLIC_CONFIGCAT_SDK_KEY)
-  const sugconfr = await configcat.getValueAsync(
-    'sugconfr',
-    false
-  )
-
-  return { props: { sugconfr } }
-}

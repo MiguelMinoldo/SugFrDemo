@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
@@ -23,18 +24,23 @@ const Home: NextPage = () => {
         </p>
 
         <div className={styles.grid}>
-          <a href="/featureflags" className={styles.card}>
-            <h2>Feature Flags &rarr;</h2>
-            <p>ConfigCat is a service for feature flag and configuration management. 
-              In this demo you'll be able to use feature flags at the edge.
-            </p>
-          </a>
+          <Link href="/featureflags">
+            <a className={styles.card}>
+              <h2>Feature Flags &rarr;</h2>
+              <p>ConfigCat is a service for feature flag and configuration management. 
+                In this demo you will be able to use feature flags at the edge.
+              </p>
+            </a>
+          </Link>
 
-          <a href="abtest" className={styles.card}>
-            <h2>A/B Testing &rarr;</h2>
-            <p>By A/B testing directly on the server-side, 
-              you'll reduce layout shift from client-loaded experiments and improving your site's performance with smaller JavaScript bundles.</p>
-          </a>
+          <Link href="abtest">
+            <a className={styles.card}>
+              <h2>A/B Testing &rarr;</h2>
+              <p>By A/B testing directly on the server-side, 
+                you will reduce layout shift from client-loaded experiments and 
+                improving your sites performance with smaller JavaScript bundles.</p>
+            </a>
+          </Link>
 
         </div>
       </main>

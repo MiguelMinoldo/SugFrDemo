@@ -8,56 +8,37 @@
     "RolloutRules": "r",
     "VariationId": "i"
   },
-  "RolloutRules": {
-    "Order": "o",
-    "ComparisonAttribute": "a",
-    "Comparator": "t",
-    "ComparisonValue": "c",
-    "Value": "v",
-    "VariationId": "i"
-  },
-  "RolloutPercentageItems": {
-    "Order": "o",
-    "Value": "v",
-    "Percentage": "p",
-    "VariationId": "i"
-  },
+  "RolloutRules": {},
+  "RolloutPercentageItems": {},
   "ConfigJSON": {
     "p": { "u": "https://cdn-global.configcat.com", "r": 0 },
     "f": {
-      "isMyFirstFeatureEnabled": {
-        "v": true,
-        "i": "868cff8d",
-        "t": 0,
-        "p": [],
-        "r": []
-      },
+      "sugconfr": { "v": true, "i": "d08bf345", "t": 0, "p": [], "r": [] },
       "newaboutpage": {
-        "v": false,
-        "i": "2fd8e62c",
+        "v": true,
+        "i": "13469742",
         "t": 0,
         "p": [
-          { "o": 0, "v": true, "p": 50, "i": "d549a761" },
-          { "o": 1, "v": false, "p": 50, "i": "2fd8e62c" }
+          { "o": 0, "v": true, "p": 50, "i": "13469742" },
+          { "o": 1, "v": false, "p": 50, "i": "d206cdb8" }
         ],
         "r": []
       },
-      "clientSideFeatureEnabled": {
-        "v": true,
-        "i": "23318dcd",
+      "userFromFrance": {
+        "v": false,
+        "i": "df30e0c3",
         "t": 0,
         "p": [],
-        "r": []
-      },
-      "newMarketingPage": {
-        "v": true,
-        "i": "fd5f7194",
-        "t": 0,
-        "p": [
-          { "o": 0, "v": true, "p": 50, "i": "fd5f7194" },
-          { "o": 1, "v": false, "p": 50, "i": "1cfd1b67" }
-        ],
-        "r": []
+        "r": [
+          {
+            "o": 0,
+            "a": "Country",
+            "t": 16,
+            "c": "e3772ac4b4db87b4a8dbfa59ef43cd1a8ad29515",
+            "v": false,
+            "i": "df30e0c3"
+          }
+        ]
       }
     }
   }

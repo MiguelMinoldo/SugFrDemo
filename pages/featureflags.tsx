@@ -1,5 +1,5 @@
 import { createClient } from 'configcat-node'
-import { Text, Code, List, Link, Button } from '@vercel/examples-ui'
+import { Text } from '@vercel/examples-ui'
 import { useValue } from '@lib/use-configcat'
 import ConfigcatLayout from '@components/layout'
 import Head from 'next/head'
@@ -39,7 +39,7 @@ export default function Index({ sugconfr }) {
           ) : (
             <a href="https://app.configcat.com/" className={styles.card}>
             <h2>Ouch! &rarr;</h2>
-            <p>The feature flag called 'sugconfr' is{' '}</p>
+            <p>The feature flag called <code>sugconfr</code> is{' '}</p>
             <b>disabled</b> in your ConfigCat dashboard, enabling it will change
               this text
           </a>
@@ -53,7 +53,7 @@ export default function Index({ sugconfr }) {
 
       {userFromFrance && (
         <Text>
-          It seems you're coming from France.. <b>See you in our next meetup!</b>
+          It seems you are coming from France.. <b>See you in our next meetup!</b>
         </Text>
       )}
     </main>
