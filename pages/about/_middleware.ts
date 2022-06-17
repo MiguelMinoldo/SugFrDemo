@@ -12,8 +12,7 @@ export function middleware(req: NextRequest) {
     return NextResponse.redirect(url)
   }
 
-  const cookie =
-    req.cookies[COOKIE_NAME] || (getValue('newaboutpage') ? '1' : '0')
+  const cookie = req.cookies[COOKIE_NAME] || (getValue('newaboutpage') ? '1' : '0')
 
   url.pathname = cookie === '1' ? '/about/aboutnew' : '/about'
 

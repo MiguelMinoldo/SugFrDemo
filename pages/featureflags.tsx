@@ -1,13 +1,11 @@
 import { createClient } from 'configcat-node'
 import { Text } from '@vercel/examples-ui'
-import { useValue } from '@lib/use-configcat'
 import ConfigcatLayout from '@components/layout'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
-export default function Index({ sugconfr }) {
-  const userFromFrance = useValue('userFromFrance', false)
+export default function Index({ sugconfr, userFromFrance }) {
   
   return (
     <div className={styles.container}>
