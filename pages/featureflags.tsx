@@ -7,9 +7,13 @@ import Cookies from 'js-cookie'
 import { useValue } from '@lib/use-configcat'
 
 export default function Index({ sugconfr }) {
-  const userFromFrance =  useValue ('sugconfr', false, Cookies.get('uId'), Cookies.get('frenchUser'))
+  const uId = Cookies.get('uId');
+  const uCountry = Cookies.get('uCountry');
+  const userFromFrance =  useValue ('sugconfr', false, uId, uCountry)
   
   console.log('userFromFrance', userFromFrance)
+  console.log('uId', uId)
+  console.log('uCountry', uCountry)
   
   return (
     <div className={styles.container}>

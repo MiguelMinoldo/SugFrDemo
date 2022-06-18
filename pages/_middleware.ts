@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-const COOKIE_NAME = 'flag-frenchUser'
+const COOKIE_NAME = 'uCountry'
 
 export function middleware(req: NextRequest) {
   const url = req.nextUrl.clone()
@@ -8,12 +8,6 @@ export function middleware(req: NextRequest) {
   // Fetch user Id from the cookie if available 
   const userId = req.cookies['uId'] || crypto.randomUUID()
     
-  //const sugconfr = useValue('sugconfr', false, userId, req.geo.city)
-  
-  //console.log("sugconfr: " + sugconfr);
-  
-  //const cookie = req.cookies[COOKIE_NAME] || (sugconfr ? '1' : '0')
-
   const res = NextResponse.rewrite(url)
 
   // Add the cookie if it's not there
