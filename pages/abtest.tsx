@@ -53,7 +53,15 @@ export default function Index() {
           Remove /about cookie & reload
         </Button>
       </div>
-      
+      <div className="mb-4">
+        <Button
+          variant="secondary"
+          className="mr-2.5"
+          onClick={() => window.history.back()}
+        >
+          Back
+        </Button>
+      </div>
     </main>
     </div>
     </>

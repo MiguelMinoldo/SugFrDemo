@@ -23,7 +23,7 @@ const Home: NextPage = () => {
         </p>
 
         <div className={styles.grid}>
-          <Link href="/featureflags">
+          <Link href="/featureflag/featureflags">
             <a className={styles.card}>
               <h2>Feature Flags &rarr;</h2>
               <p>ConfigCat is a service for feature flag and configuration management. 

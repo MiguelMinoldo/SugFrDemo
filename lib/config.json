@@ -8,8 +8,20 @@
     "RolloutRules": "r",
     "VariationId": "i"
   },
-  "RolloutRules": {},
-  "RolloutPercentageItems": {},
+  "RolloutRules": {
+    "Order": "o",
+    "ComparisonAttribute": "a",
+    "Comparator": "t",
+    "ComparisonValue": "c",
+    "Value": "v",
+    "VariationId": "i"
+  },
+  "RolloutPercentageItems": {
+    "Order": "o",
+    "Value": "v",
+    "Percentage": "p",
+    "VariationId": "i"
+  },
   "ConfigJSON": {
     "p": { "u": "https://cdn-global.configcat.com", "r": 0 },
     "f": {

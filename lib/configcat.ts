@@ -20,12 +20,12 @@ export function getValue<K extends Keys>(key: K): boolean {
 
   let n = cryptoRandom() * 100
 
-  /*return (
+  return (
     percentageItems.find((item) => {
       n -= item[c.RolloutPercentageItems.Percentage]
       return n <= 0
     })?.[c.RolloutPercentageItems.Value] ?? setting[c.Setting.Value]
-  )*/
+  )
 }
 
 function cryptoRandom() {
