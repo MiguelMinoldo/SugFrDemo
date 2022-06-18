@@ -1,11 +1,15 @@
-import { createClient } from 'configcat-node'
 import { Text } from '@vercel/examples-ui'
 import ConfigcatLayout from '@components/layout'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import Cookies from 'js-cookie'
+import { useValue } from '@lib/use-configcat'
 
-export default function Index({ sugconfr, userFromFrance }) {
+export default function Index({ sugconfr }) {
+  const userFromFrance =  useValue ('sugconfr', false, Cookies.get('uId'), Cookies.get('frenchUser'))
+  
+  console.log('userFromFrance', userFromFrance)
   
   return (
     <div className={styles.container}>
@@ -59,13 +63,3 @@ export default function Index({ sugconfr, userFromFrance }) {
 }
 
 Index.Layout = ConfigcatLayout
-
-export async function getStaticProps() {
-  const configcat = createClient(process.env.NEXT_PUBLIC_CONFIGCAT_SDK_KEY)
-  const sugconfr = await configcat.getValueAsync(
-    'sugconfr',
-    false
-  )
-
-  return { props: { sugconfr } }
-}

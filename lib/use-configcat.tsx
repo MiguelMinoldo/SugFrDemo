@@ -31,13 +31,20 @@ export const ConfigcatProvider: FC = ({ children }) => {
 
 export const useConfigcat = () => useContext(configcatContext)
 
-export const useValue = (key: string, defaultValue: any) => {
+export const useValue = (key: string, defaultValue: any, uId?: string, uCountry?: string) => {
   const [value, setValue] = useState(false)
   const configcat = useConfigcat()
+  
+  var userObject = {
+    identifier : uId,
+    country : uCountry
+  };
 
   useEffect(() => {
     if (configcat) {
-      configcat.getValueAsync(key, defaultValue).then((v) => setValue(v))
+      configcat.getValueAsync(key, defaultValue, userObject).then((v) => setValue(v)).then( value => {
+        console.log(key + value);
+      });
     }
   }, [configcat, key, defaultValue])
 
