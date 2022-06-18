@@ -3,17 +3,10 @@ import ConfigcatLayout from '@components/layout'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import Cookies from 'js-cookie'
-import { useValue } from '@lib/use-configcat'
+import nookies from 'nookies'
+import { createClient } from 'configcat-node'
 
-export default function Index({ sugconfr }) {
-  const uId = Cookies.get('uId');
-  const uCountry = Cookies.get('uCountry');
-  const userFromFrance =  useValue ('sugconfr', false, uId, uCountry)
-  
-  console.log('userFromFrance', userFromFrance)
-  console.log('uId', uId)
-  console.log('uCountry', uCountry)
+export default function Index({ sugconfr, userFromFrance }) {
   
   return (
     <div className={styles.container}>
@@ -67,3 +60,24 @@ export default function Index({ sugconfr }) {
 }
 
 Index.Layout = ConfigcatLayout
+
+export async function getServerSideProps(ctx) {
+  const cookies = nookies.get(ctx)
+  const configcat = createClient(process.env.NEXT_PUBLIC_CONFIGCAT_SDK_KEY)
+
+  var userObject = {
+    identifier : cookies['uId'],
+    country : cookies['uCountry']
+  };
+
+  const userFromFrance = await configcat.getValueAsync(
+    'userFromFrance',
+    false,
+    userObject
+  )
+
+  console.log('userFromFrance', userFromFrance)
+  console.log('uCountry', cookies['uCountry'])
+
+  return { props: { userFromFrance } }
+}
