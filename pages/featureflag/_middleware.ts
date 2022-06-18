@@ -8,8 +8,7 @@ export function middleware(req: NextRequest) {
   // Fetch user Id from the cookie if available 
   const userId = req.cookies['uId'] || crypto.randomUUID()
   const country = req.geo.country
-  const newUrl = country === 'FR' ? url + '/FR' : url
-  const res = NextResponse.rewrite(newUrl)
+  const res = NextResponse.rewrite(url)
 
   // Add the cookie if it's not there
   if (!req.cookies[COOKIE_NAME]) {
