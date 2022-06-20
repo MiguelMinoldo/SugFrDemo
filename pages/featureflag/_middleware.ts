@@ -10,6 +10,9 @@ export function middleware(req: NextRequest) {
   const country = req.geo.country
   const res = NextResponse.rewrite(url)
 
+  // Add some logging..
+  console.log('User with IP: ' + req.ip + ' is coming from: ' + country)
+
   // Add the cookie if it's not there
   if (!req.cookies[COOKIE_NAME]) {
     res.cookie(COOKIE_NAME, country)
