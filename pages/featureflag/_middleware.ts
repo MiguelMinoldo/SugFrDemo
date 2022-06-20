@@ -1,25 +1,27 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-const COOKIE_NAME = 'uCountry'
+const COOKIE_NAME_COUNTRY = 'uCountry'
+const COOKIE_NAME_UID = 'uId'
 
 export function middleware(req: NextRequest) {
   const url = req.nextUrl.clone()
   
   // Fetch user Id from the cookie if available 
-  const userId = req.cookies['uId'] || crypto.randomUUID()
-  const country = req.geo.country
+  const userId = req.cookies[COOKIE_NAME_UID] || crypto.randomUUID()
+  const country = req.cookies[COOKIE_NAME_COUNTRY] || req.geo.country
   const res = NextResponse.rewrite(url)
 
-  // Add some logging..
-  console.log('User with IP: ' + req.ip + ' is coming from: ' + country)
+  console.log('User ID is: ', userId)
 
-  // Add the cookie if it's not there
-  if (!req.cookies[COOKIE_NAME]) {
-    res.cookie(COOKIE_NAME, country)
+  res.headers.set('x-user-id', userId)
+
+  // Add the cookies if those are not there
+  if (!req.cookies[COOKIE_NAME_COUNTRY]) {
+    res.cookie(COOKIE_NAME_COUNTRY, country)
   }
 
-  if (!req.cookies['uId']) {
-    res.cookie('uId', userId)
+  if (!req.cookies[COOKIE_NAME_UID]) {
+    res.cookie(COOKIE_NAME_UID, userId)
   }
 
   return res
