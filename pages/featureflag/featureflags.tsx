@@ -12,6 +12,7 @@ export default function Index({ sugconfr, userFromFrance }) {
   const removeCookies = () => {
     Cookies.remove('uId')
     Cookies.remove('uCountry')
+    Cookies.remove('sugconfr')
     window.location.reload()
   }
 
@@ -107,9 +108,8 @@ export async function getServerSideProps(ctx) {
     false,
     userObject
   )
-
-  console.log('userFromFrance', userFromFrance)
-  console.log('uCountry', cookies['uCountry'])
+  
+  //const sugconfr = cookies['sugconfr'] === '1' || false
 
   const sugconfr = await configcat.getValueAsync(
     'sugconfr',
